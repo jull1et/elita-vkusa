@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<meta name="theme-color" content="#110d0b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{OG_DESCRIPTION}}">
+<meta property="og:image" content="__CDN__img/og.jpg">
+<meta property="og:url" content="{{SITE_URL}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/webp" href="img/logo-150.webp">
+<!--ROBOTS-->
+<link rel="preload" as="image" imagesrcset="img/hero-800.webp 800w, img/hero-1200.webp 1200w, img/hero-1600.webp 1600w, img/hero-2000.webp 2000w" imagesizes="(max-width:859px) 160vw, 75vw" fetchpriority="high">
+<link rel="preload" href="__CDN__fonts/cormorant-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="__CDN__fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Onest";font-weight:400 800;font-style:normal;font-display:swap;src:url(__CDN__fonts/onest-cyrillic.woff2) format("woff2"),url(fonts/onest-cyrillic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Onest";font-weight:400 800;font-style:normal;font-display:swap;src:url(__CDN__fonts/onest-latin.woff2) format("woff2"),url(fonts/onest-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Cormorant Garamond";font-weight:500 700;font-style:normal;font-display:swap;src:url(__CDN__fonts/cormorant-cyrillic.woff2) format("woff2"),url(fonts/cormorant-cyrillic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Cormorant Garamond";font-weight:500 700;font-style:normal;font-display:swap;src:url(__CDN__fonts/cormorant-latin.woff2) format("woff2"),url(fonts/cormorant-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Cormorant Garamond";font-weight:500 700;font-style:italic;font-display:swap;src:url(__CDN__fonts/cormorant-italic-cyrillic.woff2) format("woff2"),url(fonts/cormorant-italic-cyrillic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Cormorant Garamond";font-weight:500 700;font-style:italic;font-display:swap;src:url(__CDN__fonts/cormorant-italic-latin.woff2) format("woff2"),url(fonts/cormorant-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  /* Dark warm black + cream + saffron. One accent, one theme (dark), sharp corners everywhere. */
+  --bg:#110d0b; --surf:#1a1410; --surf2:#231b15; --cream:#f6eee1;
+  --muted:#c4b8a6; --line:rgba(246,238,225,.15); --line2:rgba(246,238,225,.34);
+  --acc:#e3aa48; --acc-hi:#f0c068; --on-acc:#1a120a; --err:#ff9b88;
+  --r:2px; --pad:20px;
+  --disp:"Cormorant Garamond","Times New Roman",serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:var(--bg)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--bg);color:var(--cream);font:400 17px/1.55 "Onest",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+img{display:block;max-width:100%}
+button,input,textarea{font:inherit;color:inherit}
+a{color:inherit}
+.i{width:1.25em;height:1.25em;fill:currentColor;flex:none}
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 var(--pad)}
+h1,h2,h3{font-family:var(--disp);font-weight:600;letter-spacing:-.012em;line-height:1.06;text-wrap:balance}
+h1 em,h2 em{font-style:italic;font-weight:500;color:var(--acc)}
+h2{font-size:clamp(38px,9.4vw,64px)}
+.lead{color:var(--muted);max-width:52ch;margin-top:16px;font-size:18px}
+section{padding:76px 0}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 30px;border-radius:var(--r);border:1px solid transparent;font-weight:600;letter-spacing:.01em;text-decoration:none;cursor:pointer;white-space:nowrap;transition:transform .25s cubic-bezier(.16,1,.3,1),background .25s,border-color .25s,color .25s,box-shadow .25s}
+.btn:active{transform:scale(.98) translateY(1px)}
+.btn-acc{background:var(--acc);color:var(--on-acc)}
+.btn-acc:hover{background:var(--acc-hi);transform:translateY(-2px);box-shadow:0 12px 28px -12px rgba(227,170,72,.7)}
+.btn-line{border-color:var(--line2);color:var(--cream);background:transparent}
+.btn-line:hover{background:var(--cream);border-color:var(--cream);color:#1a120a;transform:translateY(-2px)}
+.btn-dark{background:#1a120a;color:var(--cream)}
+.btn-dark:hover{background:var(--acc);color:var(--on-acc);transform:translateY(-2px)}
+
+.demo{background:var(--acc);color:var(--on-acc);text-align:center;font-size:13.5px;font-weight:500;line-height:40px;height:40px;white-space:nowrap;overflow:hidden;padding:0 12px}
+.demo .d-l{display:none}
+
+/* hero */
+.top{position:absolute;inset:0 0 auto 0;z-index:5;padding:max(14px,env(safe-area-inset-top)) 0 0}
+.top .wrap{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo img{width:52px;height:52px;border-radius:50%;border:1px solid rgba(246,238,225,.5)}
+.logo b{font-family:var(--disp);font-weight:600;font-size:27px;line-height:1}
+.wa-ico{display:flex;align-items:center;gap:10px;min-height:48px;padding:0 14px;border-radius:var(--r);border:1px solid var(--line2);background:rgba(17,13,11,.45);backdrop-filter:blur(8px);text-decoration:none;font-weight:500;font-size:15px;transition:background .25s,color .25s,border-color .25s}
+.wa-ico:hover{background:var(--cream);color:#1a120a;border-color:var(--cream)}
+.wa-ico span{display:none}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding-bottom:44px}
+.hero picture{position:relative;display:block;height:max(310px,45svh)}
+.hero picture img{width:100%;height:100%;object-fit:cover;object-position:46% 50%}
+.hero picture::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,13,11,.72) 0%,rgba(17,13,11,0) 30%,rgba(17,13,11,0) 52%,var(--bg) 100%)}
+.hero>.wrap{position:relative;margin-top:-72px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--acc)}
+.hero h1{font-size:clamp(46px,12.6vw,110px);max-width:11ch;line-height:1;margin-top:14px}
+.hero p.sub{margin-top:20px;max-width:36ch;font-size:18.5px;color:rgba(246,238,225,.92)}
+.hero .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+
+/* facts */
+.facts{padding:0;background:var(--surf);border-block:1px solid var(--line)}
+.facts .wrap{display:grid;grid-template-columns:repeat(3,1fr);padding-block:30px}
+.fact{text-align:center;padding:0 8px}
+.fact:not(:first-child){border-left:1px solid var(--line2)}
+.fact b{display:block;font-size:clamp(26px,7.4vw,50px);font-weight:500;letter-spacing:-.035em;line-height:1;color:var(--acc)}
+.fact span{display:block;margin:10px auto 0;font-size:14px;line-height:1.3;color:var(--muted);max-width:18ch}
+
+/* benefits */
+.ben{list-style:none;display:grid;margin-top:40px}
+.ben li{display:grid;grid-template-columns:44px 1fr;gap:18px;padding:26px 0;border-top:1px solid var(--line2)}
+.ben .ic{color:var(--acc);padding-top:3px}
+.ben .ic .i{width:32px;height:32px}
+.ben h3{font-size:28px}
+.ben p{color:var(--muted);font-size:16px;margin-top:8px}
+
+/* tariffs */
+.tariffs{background:var(--surf)}
+.tar-grid{display:grid;gap:18px;margin-top:40px}
+.tar{border:1px solid var(--line2);padding:34px 28px;display:flex;flex-direction:column;transition:border-color .3s,transform .5s cubic-bezier(.16,1,.3,1)}
+.tar:hover{transform:translateY(-4px);border-color:var(--acc)}
+.tar.feat{background:var(--cream);border-color:var(--cream);color:#1a120a}
+.tar h3{font-size:38px}
+.tar .price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:14px}
+.tar .price .pre{font-size:16px;opacity:.75}
+.tar .price b{font-size:clamp(50px,13vw,72px);font-weight:500;line-height:.95;letter-spacing:-.04em}
+.tar .price .u{font-size:15px;opacity:.75;line-height:1.25}
+.tar ul{list-style:none;margin:26px 0 30px;display:grid;gap:12px}
+.tar li{display:flex;gap:12px;align-items:flex-start;font-size:17px}
+.tar li .i{margin-top:3px;width:20px;height:20px;color:var(--acc)}
+.tar.feat li .i{color:#a8700f}
+.tar .btn{margin-top:auto;width:100%}
+.notinc{margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 28px;padding:20px 0;border-block:1px solid var(--line2)}
+.notinc b{font-family:var(--disp);font-size:25px;font-weight:600;flex-basis:100%}
+.notinc .ni{display:inline-flex;align-items:center;gap:8px;font-weight:600}
+.notinc .ni .i{color:var(--acc)}
+.notinc>span{color:var(--muted);font-size:15px}
+.tar-note{margin-top:20px;color:var(--muted);font-size:15px;max-width:66ch}
+
+/* menu */
+.tabs{display:flex;gap:8px;margin-top:30px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{min-height:48px;padding:0 20px;border-radius:var(--r);border:1px solid var(--line2);background:transparent;font-weight:600;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:8px;transition:background .2s,color .2s,border-color .2s}
+.tab:hover{border-color:var(--acc)}
+.tab[aria-pressed=true]{background:var(--cream);color:#1a120a;border-color:var(--cream)}
+.tab small{font-weight:500;opacity:.7}
+.dishes{list-style:none;margin-top:14px;display:grid;grid-template-columns:1fr;column-gap:48px}
+.dish,.row-set{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.dish .t{flex:1;min-width:0}
+.dish .n{font-family:var(--disp);font-weight:600;font-size:24px;line-height:1.12}
+.dish .d{color:var(--muted);font-size:14.5px;line-height:1.4;margin-top:4px}
+.add{width:48px;height:48px;flex:none;border-radius:var(--r);border:1px solid var(--line2);background:transparent;display:grid;place-items:center;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .15s}
+.add:active{transform:scale(.94)}
+.add:hover{border-color:var(--acc);color:var(--acc)}
+.add[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
+.add .i{width:22px;height:22px}
+.add .ck{display:none}.add[aria-pressed=true] .pl{display:none}.add[aria-pressed=true] .ck{display:block}
+
+/* sets */
+.sets{background:var(--surf)}
+.set-grid{display:grid;gap:14px;margin-top:40px}
+.set{background:var(--bg);border:1px solid var(--line);padding:26px 22px 20px;display:flex;flex-direction:column;transition:border-color .3s,transform .5s cubic-bezier(.16,1,.3,1)}
+.set:hover{border-color:var(--acc);transform:translateY(-3px)}
+.set h3{font-size:29px}
+.set ul{list-style:none;margin:14px 0 20px;display:grid;gap:7px;color:var(--muted);font-size:15px}
+.set li{padding-left:16px;position:relative}
+.set li::before{content:"";position:absolute;left:0;top:.75em;width:7px;height:1px;background:var(--acc)}
+.set .foot2{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:16px}
+.pr{font-size:22px;font-weight:500;letter-spacing:-.03em;white-space:nowrap}
+.pr small{font-size:13px;color:var(--muted);letter-spacing:0;margin-left:4px}
+.more[hidden]{display:none}
+.more{margin-top:14px}
+.more .set-grid{margin-top:0}
+.small-h{font-size:32px;margin-top:44px}
+.small-sets{list-style:none;margin-top:10px;display:grid;column-gap:48px}
+.small-sets .row-set{flex-wrap:wrap;row-gap:10px}
+.row-set .nm{flex:1 1 120px;min-width:0;font-size:16.5px}
+.add[hidden]{display:none}
+.qty{margin-left:auto;display:flex;justify-content:flex-end;min-width:48px}
+.q-step{display:flex;align-items:center}
+.q-step[hidden]{display:none}
+.q-step button{width:44px;height:48px;border:1px solid var(--acc);background:transparent;color:var(--acc);cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s}
+.q-step button:hover{background:var(--acc);color:var(--on-acc)}
+.q-step input.q-n{width:64px;min-height:48px;height:48px;text-align:center;font-weight:600;font-size:17px;background:var(--surf2);border:1px solid var(--acc);border-inline:0;color:var(--cream);border-radius:0}
+.q-step input:focus{outline:2px solid var(--acc);outline-offset:-2px}
+.moreb{margin-top:30px}
+
+/* gallery */
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:40px}
+.shots figure{overflow:hidden;background:var(--surf2) center/cover;aspect-ratio:1/1}
+.shots figure:first-child{grid-column:1/-1;aspect-ratio:5/4}
+.shots img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.shots figure:hover img{transform:scale(1.06)}
+.shots-note{margin-top:14px;color:var(--muted);font-size:14.5px}
+
+/* other services */
+.svc-grid{display:grid;gap:16px;margin-top:36px}
+.svc{border:1px solid var(--line2);padding:30px 26px;display:flex;flex-direction:column;background:var(--bg)}
+.svc h3{font-size:34px}
+.svc>p{color:var(--muted);margin-top:10px;font-size:16px}
+.svc .price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:14px}
+.svc .price b{font-size:46px;font-weight:500;letter-spacing:-.04em;line-height:1;color:var(--acc)}
+.svc .price .u{font-size:14.5px;color:var(--muted)}
+details{margin:20px 0 26px;border-top:1px solid var(--line)}
+summary{cursor:pointer;padding:14px 0;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center;min-height:48px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:24px;color:var(--acc);font-weight:400}
+details[open] summary::after{content:"\2212"}
+.days div{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.days dt{font-family:var(--disp);font-size:21px;font-weight:600;line-height:1.2}
+.days dd{color:var(--muted)}
+.tiers{list-style:none;margin:20px 0 6px}
+.tiers li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 0;border-top:1px solid var(--line)}
+.tiers li div{display:grid}
+.tiers .t1{font-family:var(--disp);font-size:25px;font-weight:600;line-height:1.1}
+.tiers .t2{font-size:14px;color:var(--muted)}
+.tiers .t3{font-size:24px;font-weight:500;letter-spacing:-.03em}
+.svc .u2{font-size:14px;color:var(--muted);margin:0 0 24px}
+.svc .btn{margin-top:auto;width:100%}
+
+/* process */
+.steps{list-style:none;margin-top:36px;display:grid}
+.steps li{display:grid;grid-template-columns:54px 1fr;gap:18px;padding-bottom:30px;position:relative}
+.steps li:not(:last-child)::before{content:"";position:absolute;left:26px;top:58px;bottom:4px;width:1px;background:var(--line2)}
+.steps .ic{width:54px;height:54px;border-radius:50%;border:1px solid var(--acc);display:grid;place-items:center;color:var(--acc);background:var(--bg)}
+.steps h3{font-size:27px;padding-top:6px}
+.steps p{color:var(--muted);font-size:15.5px;margin-top:8px}
+
+/* order */
+.order{background:var(--surf)}
+.card{background:var(--bg);border:1px solid var(--line2);padding:24px;margin-top:32px}
+.field{display:grid;gap:8px;margin-bottom:20px}
+.field>label,.field>.lab{font-weight:600;font-size:15px}
+.field .help{color:var(--muted);font-size:14px}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.row2 .field{min-width:0}
+.pick{position:relative;min-width:0}
+.pick input{display:block;width:100%;min-width:0;max-width:100%;-webkit-appearance:none;appearance:none;text-align:left}
+.pick .ph{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#a89c8c;pointer-events:none;font-size:16px}
+.pick.has .ph{display:none}
+.pick:not(.has) input::-webkit-datetime-edit{color:transparent}
+.pick:not(.has) input::-webkit-datetime-edit-fields-wrapper{color:transparent}
+input[type=date]::-webkit-date-and-time-value,input[type=time]::-webkit-date-and-time-value{text-align:left;min-height:1.2em}
+input[type=text],input[type=date],input[type=time],textarea{width:100%;min-height:52px;padding:12px 14px;border-radius:var(--r);border:1px solid var(--line2);background:var(--surf2);font-size:16px;color:var(--cream)}
+textarea{min-height:96px;resize:vertical}
+input::placeholder,textarea::placeholder{color:#a89c8c}
+input:focus,textarea:focus{outline:3px solid rgba(227,170,72,.4);outline-offset:0;border-color:var(--acc)}
+.err{border-color:var(--err)!important}
+.errt{color:var(--err);font-size:14px}
+.step{display:flex;align-items:center;gap:8px}
+.step button{width:52px;height:52px;border-radius:var(--r);border:1px solid var(--line2);background:var(--surf2);cursor:pointer;display:grid;place-items:center;transition:border-color .2s}
+.step button:hover{border-color:var(--acc)}
+.step input{text-align:center;font-weight:700;font-size:20px;min-height:52px;width:92px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:48px;padding:0 18px;border-radius:var(--r);border:1px solid var(--line2);background:var(--surf2);cursor:pointer;font-weight:500;transition:background .2s,color .2s,border-color .2s}
+.chip:hover{border-color:var(--acc)}
+.chip[aria-pressed=true]{background:var(--acc);color:var(--on-acc);border-color:var(--acc);font-weight:600}
+.chk{display:flex;align-items:flex-start;gap:12px;padding:14px;border:1px solid var(--line2);border-radius:var(--r);cursor:pointer;background:var(--surf2)}
+.chk input{width:22px;height:22px;margin-top:2px;accent-color:var(--acc);flex:none}
+.chk b{display:block;font-weight:600}
+.chk span{color:var(--muted);font-size:14.5px}
+.picked{border:1px dashed var(--line2);padding:14px;font-size:15px;color:var(--muted)}
+.picked b{color:var(--cream)}
+.send{width:100%;margin-top:6px}
+.fine{color:var(--muted);font-size:14px;margin-top:14px}
+.copy{width:100%;margin-top:10px;background:transparent;border:1px solid var(--line2);color:var(--cream);min-height:48px;border-radius:var(--r);cursor:pointer;font-weight:500;transition:background .2s,color .2s}
+.copy:hover{background:var(--cream);color:#1a120a}
+
+/* footer */
+.foot{padding:60px 0 44px;border-top:1px solid var(--line)}
+.foot .wrap{display:grid;gap:28px}
+.foot .fb{display:flex;gap:16px;align-items:center}
+.foot .fb img{width:64px;height:64px;border-radius:50%;border:1px solid var(--line2)}
+.foot h3{font-size:34px}
+.foot p{color:var(--muted);font-size:15.5px;margin-top:10px;max-width:44ch}
+.cont{display:grid;gap:6px}
+.cont a,.telx{display:flex;align-items:center;gap:12px;text-decoration:none;min-height:46px;font-weight:500}
+.cont a:hover{color:var(--acc)}
+.cont .i,.telx .i{color:var(--acc)}
+
+/* sticky bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px var(--pad) calc(10px + env(safe-area-inset-bottom));background:rgba(17,13,11,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);display:flex;gap:12px;align-items:center;justify-content:center;transform:translateY(110%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.bar.on{transform:none}
+.bar .btn{flex:1;max-width:420px}
+.bar .cnt{font-size:14px;color:var(--muted);line-height:1.2;min-width:68px}
+.bar .cnt b{display:block;color:var(--cream);font-size:17px}
+.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:var(--cream);color:#1a120a;padding:12px 18px;border-radius:var(--r);font-weight:600;font-size:15px;opacity:0;pointer-events:none;transition:.3s;z-index:30;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (prefers-reduced-motion:no-preference){
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  .hero .eyebrow,.hero h1,.hero p.sub,.hero .acts{animation:up 1s cubic-bezier(.16,1,.3,1) both}
+  .hero h1{animation-delay:.08s}.hero p.sub{animation-delay:.18s}.hero .acts{animation-delay:.28s}
+  @keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+}
+
+@media (min-width:860px){
+  .demo .d-s{display:none}.demo .d-l{display:inline}
+  :root{--pad:32px}
+  section{padding:120px 0}
+  body{padding-bottom:0}
+  .wa-ico span{display:inline}
+  .hero{display:flex;align-items:flex-end;min-height:var(--hh,calc(100svh - 40px));padding:140px 0 88px}
+  .hero picture{position:absolute;inset:0 0 0 31%;height:auto;z-index:-2}
+  .hero picture img{object-position:50% 55%}
+  .hero picture::after{display:none}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--bg) 0%,var(--bg) 32%,rgba(17,13,11,.55) 44%,rgba(17,13,11,0) 66%),linear-gradient(180deg,rgba(17,13,11,.55) 0%,rgba(17,13,11,0) 24%,rgba(17,13,11,0) 72%,rgba(17,13,11,.7) 100%)}
+  .hero>.wrap{margin-top:0}
+  .hero h1{font-size:clamp(84px,8.4vw,128px);max-width:9ch}
+  .hero p.sub{font-size:20px}
+  .ben{grid-template-columns:1fr 1fr;column-gap:72px}
+  .tar-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .tar{padding:48px 44px}
+  .notinc b{flex-basis:auto}
+  .dishes{grid-template-columns:1fr 1fr}
+  .set-grid{grid-template-columns:repeat(3,1fr);gap:16px}
+  .small-sets{grid-template-columns:1fr 1fr}
+  .shots{grid-template-columns:repeat(4,1fr);gap:12px}
+  .shots figure:first-child{grid-column:1/3;grid-row:1/3;aspect-ratio:auto}
+  .svc-grid{grid-template-columns:1fr 1fr;gap:20px}
+  .svc{padding:40px 38px}
+  .steps{grid-template-columns:repeat(3,1fr);gap:36px}
+  .steps li{grid-template-columns:1fr;padding-bottom:0}
+  .steps li:not(:last-child)::before{left:66px;right:-36px;top:27px;bottom:auto;width:auto;height:1px}
+  .ord-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:start}
+  .ord-grid .card{margin-top:0;padding:38px}
+  .foot .wrap{grid-template-columns:1.2fr 1fr;align-items:start}
+  .bar{transform:translateY(calc(100% + 40px));left:auto;right:24px;bottom:24px;border:1px solid var(--line2);padding:10px}
+  .bar.on{transform:none}
+  .bar .btn{min-width:240px}
+  .toast{bottom:32px}
+}
+</style>
+</head>
+<body>
+<!--SPRITE-->
+
+<div class="demo" role="note"><span class="d-s">Макет сайта. Создан {{AUTHOR}}</span><span class="d-l">Макет сайта для повара. Создан {{AUTHOR}}</span></div>
+
+<main id="top">
+<section class="hero">
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="#top"><img src="img/logo-150.webp" alt="Логотип «{{BRAND}}»" width="52" height="52"><b>{{BRAND}}</b></a>
+      <a class="wa-ico" href="https://wa.me/__PHONE__" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg class="i"><use href="#whatsapp-logo"/></svg><span>WhatsApp</span></a>
+    </div>
+  </header>
+  <picture><img src="img/hero-1200.webp" srcset="img/hero-800.webp 800w, img/hero-1200.webp 1200w, img/hero-1600.webp 1600w, img/hero-2000.webp 2000w" sizes="(max-width:859px) 160vw, 75vw" alt="{{ALT_HERO}}" fetchpriority="high" decoding="async" width="1600" height="1068"></picture>
+  <div class="wrap">
+    <div class="eyebrow">{{EYEBROW}}</div>
+    <h1>{{H1_HTML}}</h1>
+    <p class="sub">{{HERO_SUB}}</p>
+    <div class="acts">
+      <a class="btn btn-acc" href="#order">Рассчитать стоимость</a>
+      <a class="btn btn-line" href="#menu">Смотреть меню</a>
+    </div>
+  </div>
+</section>
+
+<section class="facts" aria-label="О нас в цифрах">
+  <div class="wrap">
+    {{FACTS}}
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <h2 class="rv">{{BENEFITS_TITLE}}</h2>
+    <p class="lead rv">{{BENEFITS_LEAD}}</p>
+    <ul class="ben">
+{{BENEFITS}}
+    </ul>
+  </div>
+</section>
+
+<section class="tariffs" id="tariffs">
+  <div class="wrap">
+    <h2 class="rv">{{TARIFFS_TITLE}}</h2>
+    <p class="lead rv">{{TARIFFS_LEAD}}</p>
+    <div class="tar-grid">
+{{TARIFFS}}
+    </div>
+    <div class="notinc rv"><b>{{NI_TITLE}}</b>{{NI_ITEMS}}<span>{{NI_TEXT}}</span></div>
+    <p class="tar-note rv">{{TARIFFS_NOTE}}</p>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <h2 class="rv">{{MENU_TITLE}}</h2>
+    <p class="lead rv">{{MENU_LEAD}}</p>
+    <div class="tabs" role="group" id="tabs" aria-label="Разделы меню"></div>
+    <ul class="dishes" id="dishes"></ul>
+  </div>
+</section>
+
+<section class="sets" id="sets">
+  <div class="wrap">
+    <h2 class="rv">{{SETS_TITLE}}</h2>
+    <p class="lead rv">{{SETS_LEAD}}</p>
+    <div class="set-grid">
+{{SETS_TOP}}
+    </div>
+    <div class="more" id="more" hidden>
+      <div class="set-grid">
+{{SETS_REST}}
+      </div>
+      <h3 class="small-h">{{SETS_SMALL_TITLE}}</h3>
+      <ul class="small-sets">
+{{SETS_SMALL}}
+      </ul>
+    </div>
+    <button class="btn btn-line moreb" id="moreb" type="button" aria-expanded="false">Показать все сеты</button>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2 class="rv">{{GALLERY_TITLE}}</h2>
+    <p class="lead rv">{{GALLERY_LEAD}}</p>
+    <div class="shots rv">
+      <figure <!--LQ:g-hall-->><img src="img/g-hall-800.webp" srcset="img/g-hall-480.webp 480w, img/g-hall-800.webp 800w, img/g-hall-1200.webp 1200w" sizes="(min-width:860px) 560px, 100vw" alt="{{ALT_G0}}" loading="lazy" decoding="async" width="800" height="534"></figure>
+      <figure <!--LQ:g-canape-->><img src="img/g-canape-600.webp" srcset="img/g-canape-360.webp 360w, img/g-canape-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="{{ALT_G1}}" loading="lazy" decoding="async" width="600" height="400"></figure>
+      <figure <!--LQ:g-fetamelon-->><img src="img/g-fetamelon-600.webp" srcset="img/g-fetamelon-360.webp 360w, img/g-fetamelon-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="{{ALT_G2}}" loading="lazy" decoding="async" width="600" height="800"></figure>
+      <figure <!--LQ:g-stand-->><img src="img/g-stand-600.webp" srcset="img/g-stand-360.webp 360w, img/g-stand-600.webp 600w" sizes="(min-width:860px) 280px, 50vw" alt="{{ALT_G3}}" loading="lazy" decoding="async" width="600" height="400"></figure>
+      <figure <!--LQ:banner-->><img src="img/banner-960.webp" srcset="img/banner-480.webp 480w, img/banner-960.webp 960w" sizes="(min-width:860px) 280px, 50vw" alt="{{ALT_G4}}" loading="lazy" decoding="async" width="960" height="480"></figure>
+    </div>
+    <p class="shots-note rv">{{GALLERY_NOTE}}</p>
+  </div>
+</section>
+
+<section class="sets" id="services">
+  <div class="wrap">
+    <h2 class="rv">{{SERVICES_TITLE}}</h2>
+    <p class="lead rv">{{SERVICES_LEAD}}</p>
+    <div class="svc-grid">
+      <article class="svc rv">
+        <h3>{{LUNCH_TITLE}}</h3>
+        <div class="price"><b>{{LUNCH_PRICE}}</b><span class="u">{{LUNCH_UNIT}}</span></div>
+        <p>{{LUNCH_TEXT}}</p>
+        <details><summary>Пример меню на неделю</summary><dl class="days">{{LUNCH_DAYS}}</dl></details>
+        <a class="btn btn-line" href="#order" data-format="{{LUNCH_FORMAT}}">{{LUNCH_CTA}}</a>
+      </article>
+      <article class="svc rv">
+        <h3>{{CHEF_TITLE}}</h3>
+        <p>{{CHEF_TEXT}}</p>
+        <ul class="tiers">{{CHEF_TIERS}}</ul>
+        <p class="u2">{{CHEF_UNIT}}</p>
+        <a class="btn btn-line" href="#order" data-format="{{CHEF_FORMAT}}">{{CHEF_CTA}}</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2 class="rv">Как это работает</h2>
+    <ol class="steps">
+{{STEPS}}
+    </ol>
+  </div>
+</section>
+
+<section class="order" id="order">
+  <div class="wrap ord-grid">
+    <div>
+      <h2 class="rv">{{ORDER_TITLE}}</h2>
+      <p class="lead rv">{{ORDER_LEAD}}</p>
+    </div>
+    <form class="card rv" id="form" novalidate>
+      <div class="field">
+        <label for="fName">Ваше имя *</label>
+        <input id="fName" type="text" autocomplete="name" placeholder="Например, Айгерим" required>
+        <span class="errt" id="eName" hidden>Укажите имя</span>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="fDate">Дата *</label>
+          <div class="pick" id="pDate"><input id="fDate" type="date" required><span class="ph">дд.мм.гггг</span></div>
+          <span class="errt" id="eDate" hidden>Выберите дату</span>
+        </div>
+        <div class="field">
+          <label for="fTime">Время начала</label>
+          <div class="pick" id="pTime"><input id="fTime" type="time"><span class="ph">чч:мм</span></div>
+        </div>
+      </div>
+      <div class="field">
+        <span class="lab" id="gl">Сколько гостей</span>
+        <div class="step" role="group" aria-labelledby="gl">
+          <button type="button" id="gMinus" aria-label="Меньше гостей"><svg class="i"><use href="#minus"/></svg></button>
+          <input id="fGuests" type="text" inputmode="numeric" value="{{MIN_GUESTS}}" aria-label="Число гостей">
+          <button type="button" id="gPlus" aria-label="Больше гостей"><svg class="i"><use href="#plus"/></svg></button>
+        </div>
+        <span class="help" id="gHelp">Фуршеты и банкеты принимаем от {{MIN_GUESTS}} гостей</span>
+      </div>
+      <div class="field">
+        <span class="lab" id="fl">Что нужно</span>
+        <div class="chips" id="formats" role="group" aria-labelledby="fl"></div>
+      </div>
+      <div class="field">
+        <span class="lab" id="tl">Тариф</span>
+        <div class="chips" id="tarchips" role="group" aria-labelledby="tl"></div>
+      </div>
+      <div class="field">
+        <label for="fPlace">Где пройдёт</label>
+        <input id="fPlace" type="text" autocomplete="street-address" placeholder="Город, район или адрес">
+      </div>
+      <div class="field">
+        <span class="lab">Дополнительно</span>
+        <label class="chk"><input type="checkbox" id="fWait"><div><b>Нужны официанты</b><span>Оплачиваются отдельно</span></div></label>
+        <label class="chk"><input type="checkbox" id="fWash"><div><b>Нужно мытьё посуды</b><span>Оплачивается отдельно</span></div></label>
+        <label class="chk"><input type="checkbox" id="fTent"><div><b>Нужны шатёр или мебель</b><span>Подберём по запросу</span></div></label>
+      </div>
+      <div class="field">
+        <span class="lab">Выбранные блюда и сеты</span>
+        <div class="picked" id="picked"></div>
+      </div>
+      <div class="field">
+        <label for="fNote">Комментарий</label>
+        <textarea id="fNote" placeholder="Повод, пожелания, аллергии, что важно учесть"></textarea>
+      </div>
+      <a class="btn btn-acc send" id="send" href="https://wa.me/__PHONE__" target="_blank" rel="noopener"><svg class="i"><use href="#whatsapp-logo"/></svg>Отправить в WhatsApp</a>
+      <button class="copy" id="copy" type="button">Скопировать текст заявки</button>
+      <p class="fine">Заявка откроется в WhatsApp уже написанной. Вам останется нажать «отправить».</p>
+      <!--DEMONOTE-->
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <div class="fb"><img src="img/logo-150.webp" alt="" width="64" height="64" loading="lazy"><h3>{{BRAND}}</h3></div>
+      <p>{{FOOTER_TEXT}}</p>
+    </div>
+    <div class="cont">
+      <a href="tel:+{{PHONE_OWNER}}"><svg class="i"><use href="#phone"/></svg>{{PHONE_OWNER_PRETTY}}</a>
+      <a href="https://wa.me/__PHONE__" target="_blank" rel="noopener"><svg class="i"><use href="#whatsapp-logo"/></svg>Написать в WhatsApp</a>
+      <a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener"><svg class="i"><use href="#instagram-logo"/></svg>{{INSTAGRAM_HANDLE}}</a>
+      <a href="#top" style="pointer-events:none"><svg class="i"><use href="#map-pin"/></svg>{{AREA_LABEL}}</a>
+    </div>
+  </div>
+</footer>
+
+<div class="bar" id="bar">
+  <div class="cnt" id="cnt" hidden>Выбрано<b id="cntN">0</b></div>
+  <a class="btn btn-acc" href="#order">Рассчитать стоимость</a>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const PHONE = "__PHONE__";  // куда уходят заявки (подставляет build.py)
+const MENU = {{MENU_JSON}};
+const FORMATS = {{FORMATS_JSON}};
+const TARIFFS = {{TARIFFS_JSON}};
+const MIN_GUESTS = {{MIN_GUESTS}};
+
+const $ = s => document.querySelector(s);
+const ICON = id => `<svg class="i"><use href="#${id}"/></svg>`;
+const picked = new Set();
+let tab = MENU[0].id, format = "", tariff = "", guests = MIN_GUESTS;
+
+/* menu */
+function renderTabs() {
+  $("#tabs").innerHTML = MENU.map(c => {
+    const n = c.items.filter(i => picked.has(i[0])).length;
+    return `<button class="tab" type="button" data-t="${c.id}" aria-pressed="${c.id === tab}">${c.title}<small>${n ? n + " из " : ""}${c.items.length}</small></button>`;
+  }).join("");
+}
+function renderDishes() {
+  const c = MENU.find(x => x.id === tab);
+  $("#dishes").innerHTML = c.items.map(([n, d]) => `
+    <li class="dish">
+      <div class="t"><div class="n">${n}</div>${d ? `<div class="d">${d}</div>` : ""}</div>
+      <button class="add" type="button" data-n="${n.replace(/"/g, "&quot;")}" aria-pressed="${picked.has(n)}" aria-label="${picked.has(n) ? "Убрать из заявки" : "Добавить в заявку"}: ${n.replace(/"/g, "&quot;")}">${ICON("plus").replace('class="i"', 'class="i pl"')}${ICON("check").replace('class="i"', 'class="i ck"')}</button>
+    </li>`).join("");
+}
+$("#tabs").addEventListener("click", e => {
+  const b = e.target.closest(".tab"); if (!b) return;
+  tab = b.dataset.t; renderTabs(); renderDishes();
+  $("#tabs").querySelector('[aria-pressed=true]').scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+});
+$("#dishes").addEventListener("click", e => {
+  const b = e.target.closest(".add"); if (!b) return;
+  const n = b.dataset.n;
+  picked.has(n) ? picked.delete(n) : picked.add(n);
+  b.setAttribute("aria-pressed", picked.has(n));
+  b.setAttribute("aria-label", (picked.has(n) ? "Убрать из заявки: " : "Добавить в заявку: ") + n);
+  renderTabs(); refresh();
+});
+
+/* sets (cards and rows): add / remove */
+document.querySelectorAll("#sets .set .add").forEach(b => b.addEventListener("click", () => {
+  const n = b.dataset.n; picked.has(n) ? picked.delete(n) : picked.add(n);
+  b.setAttribute("aria-pressed", picked.has(n));
+  b.setAttribute("aria-label", (picked.has(n) ? "Убрать из заявки: " : "Добавить в заявку: ") + n);
+  refresh();
+}));
+/* per-piece rows: quantity */
+const qty = new Map();
+document.querySelectorAll(".row-set").forEach(row => {
+  const n = row.dataset.n, add = row.querySelector(".q-add"), box = row.querySelector(".q-step"), inp = row.querySelector(".q-n");
+  const set = v => {
+    v = Math.max(0, Math.min(999, parseInt(v, 10) || 0));
+    v ? qty.set(n, v) : qty.delete(n);
+    inp.value = v || 1; box.hidden = !v; add.hidden = !!v; refresh();
+    if (v && document.activeElement === add) row.querySelector(".q-p").focus();
+  };
+  add.addEventListener("click", () => set(1));
+  row.querySelector(".q-m").addEventListener("click", () => set((qty.get(n) || 1) - 1));
+  row.querySelector(".q-p").addEventListener("click", () => set((qty.get(n) || 0) + 1));
+  inp.addEventListener("change", () => set(inp.value));
+});
+const chosen = () => [...picked, ...[...qty].map(([n, q]) => `${n}: ${q} ${document.querySelector(`.row-set[data-n="${n.replace(/"/g, '\\"')}"]`).dataset.u === "сет" ? "сет." : "шт"}`)];
+$("#moreb").addEventListener("click", e => {
+  const m = $("#more"), open = m.hidden;
+  m.hidden = !open; e.currentTarget.setAttribute("aria-expanded", String(open));
+  e.currentTarget.textContent = open ? "Скрыть" : "Показать все сеты";
+});
+
+/* form */
+const chipsHtml = list => list.map(f => `<button class="chip" type="button" aria-pressed="false">${f}</button>`).join("");
+$("#formats").innerHTML = chipsHtml(FORMATS);
+$("#tarchips").innerHTML = chipsHtml([...TARIFFS, "Пока не знаю"]);
+function singleChoice(box, set) {
+  box.addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    const on = b.getAttribute("aria-pressed") === "true";
+    box.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", "false"));
+    b.setAttribute("aria-pressed", String(!on));
+    set(on ? "" : b.textContent); refresh();
+  });
+}
+singleChoice($("#formats"), v => format = v);
+singleChoice($("#tarchips"), v => tariff = v);
+document.querySelectorAll("[data-format]").forEach(a => a.addEventListener("click", () => {
+  format = a.dataset.format;
+  $("#formats").querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x.textContent === format)));
+  refresh();
+}));
+document.querySelectorAll("[data-tariff]").forEach(a => a.addEventListener("click", () => {
+  tariff = a.dataset.tariff;
+  $("#tarchips").querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x.textContent === tariff)));
+  refresh();
+}));
+const gIn = $("#fGuests");
+function setGuests(v) {
+  guests = Math.max(1, Math.min(999, parseInt(v, 10) || MIN_GUESTS));
+  gIn.value = guests;
+  $("#gHelp").textContent = guests < MIN_GUESTS ? "Фуршеты и банкеты принимаем от {{MIN_GUESTS}} гостей. Если у вас меньше, напишите в комментарии, подскажем." : "Фуршеты и банкеты принимаем от {{MIN_GUESTS}} гостей";
+  refresh();
+}
+$("#gMinus").onclick = () => setGuests(guests - 1);
+$("#gPlus").onclick = () => setGuests(guests + 1);
+gIn.addEventListener("change", () => setGuests(gIn.value));
+{ const t = new Date(); $("#fDate").min = `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`; }
+["fName", "fDate", "fTime", "fPlace", "fNote", "fTent", "fWait", "fWash"].forEach(id => $("#" + id).addEventListener("input", refresh));
+["fDate", "fTime"].forEach(id => { const el = $("#" + id), box = el.parentElement; const sync = () => box.classList.toggle("has", !!el.value); el.addEventListener("input", sync); el.addEventListener("change", sync); sync(); });
+
+const fmtDate = v => { if (!v) return ""; const [y, m, d] = v.split("-"); return `${d}.${m}.${y}`; };
+function orderText() {
+  const name = $("#fName").value.trim(), date = fmtDate($("#fDate").value), time = $("#fTime").value;
+  const place = $("#fPlace").value.trim(), note = $("#fNote").value.trim();
+  const dishes = chosen();
+  const L = ["*Заявка с __SRC__ {{BRAND}}*", ""];
+  L.push(`Имя: ${name || "не указано"}`);
+  L.push(`Дата: ${date || "не указана"}${time ? `, начало в ${time}` : ""}`);
+  L.push(`Гостей: ${guests}`);
+  if (format) L.push(`Что нужно: ${format}`);
+  if (tariff) L.push(`Тариф: ${tariff}`);
+  if (place) L.push(`Место: ${place}`);
+  L.push(`Официанты: ${$("#fWait").checked ? "нужны" : "не нужны"}`);
+  L.push(`Мытьё посуды: ${$("#fWash").checked ? "нужно" : "не нужно"}`);
+  L.push(`Шатёр или мебель: ${$("#fTent").checked ? "нужны" : "не нужны"}`);
+  L.push(dishes.length ? `Выбрано (${dishes.length}): ${dishes.join(", ")}` : "Блюда и сеты: пока не выбрано, хочу обсудить меню");
+  if (note) L.push(`Комментарий: ${note}`);
+  L.push("", "Прошу рассчитать стоимость.");
+  return L.join("\n");
+}
+function refresh() {
+  $("#send").href = `https://wa.me/${PHONE}?text=${encodeURIComponent(orderText())}`;
+  const n = picked.size + qty.size;
+  $("#picked").innerHTML = n ? `<b>Выбрано ${n}:</b> ${chosen().join(", ")}` : "Пока ничего не выбрано. Отметьте блюда и сеты выше или обсудите меню с нами.";
+  $("#cnt").hidden = !n; $("#cntN").textContent = n;
+}
+function check() {
+  const n = $("#fName"), d = $("#fDate");
+  const okN = !!n.value.trim(), okD = !!d.value;
+  n.classList.toggle("err", !okN); $("#eName").hidden = okN;
+  d.classList.toggle("err", !okD); $("#eDate").hidden = okD;
+  (!okN ? n : !okD ? d : null)?.focus();
+  return okN && okD;
+}
+$("#send").addEventListener("click", e => { if (!check()) { e.preventDefault(); toast("Заполните имя и дату"); } });
+function toast(t) {
+  const el = $("#toast"); el.textContent = t; el.classList.add("show");
+  clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("show"), 3200);
+}
+$("#copy").onclick = async () => {
+  if (!check()) { toast("Заполните имя и дату"); return; }
+  const t = orderText();
+  try { await navigator.clipboard.writeText(t); toast("Текст заявки скопирован"); }
+  catch { const a = document.createElement("textarea"); a.value = t; document.body.append(a); a.select(); document.execCommand("copy"); a.remove(); toast("Текст заявки скопирован"); }
+};
+
+/* sticky bar: show after hero, hide while the order form is on screen */
+const bar = $("#bar");
+let pastHero = false, formSeen = false;
+const upd = () => bar.classList.toggle("on", pastHero && !formSeen);
+new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; upd(); }, { threshold: 0.2 }).observe(document.querySelector(".hero"));
+new IntersectionObserver(([e]) => { formSeen = e.isIntersecting; upd(); }, { threshold: 0.15 }).observe($("#order"));
+
+/* reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.12 });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+
+/* hero height is fixed once per width: mobile browser toolbars collapsing on scroll must not resize the photo */
+{ const hero = document.querySelector(".hero"); let lw = innerWidth;
+  const setH = () => hero.style.setProperty("--hh", Math.max(560, innerHeight - 40) + "px");
+  setH(); addEventListener("resize", () => { if (innerWidth !== lw) { lw = innerWidth; setH(); } }); }
+
+/* if the CDN is unreachable, fall back to the files next to the page */
+document.addEventListener("error", e => {
+  const i = e.target; if (i.tagName !== "IMG" || i.dataset.fb || !i.src.includes("cdn.jsdelivr.net")) return;
+  i.dataset.fb = 1; i.removeAttribute("srcset"); i.parentElement.querySelectorAll?.("source").forEach(x => x.remove());
+  i.src = i.src.replace(/^https:\/\/cdn\.jsdelivr\.net\/gh\/[^/]+\/[^/]+@[^/]+\//, "");
+}, true);
+
+renderTabs(); renderDishes(); refresh();
+</script>
+</body>
+</html>
